@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/HomePage/TabModel'
+      redirect: '/HomePage/TabModel/first'
     },
     {
       path: '/HomePage',
@@ -18,7 +18,7 @@ export default new Router({
       component: HomePage,
       children: [
         {
-          path: '/HomePage/TabModel',
+          path: '/HomePage/TabModel/:show',
           name: 'TabModel',
           component: TabModel
         }

@@ -22,7 +22,7 @@
           <span>导航一</span>
         </template>
         <!-- <el-menu-item-group> -->
-          <router-link to="/HomePage/TabModel" tag="div">
+          <router-link to="/HomePage/TabModel/first" tag="div">
             <el-menu-item index="1-1">选项1</el-menu-item>
           </router-link>
           <el-menu-item index="1-2">选项2</el-menu-item>

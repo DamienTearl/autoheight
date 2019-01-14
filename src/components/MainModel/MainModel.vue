@@ -6,7 +6,7 @@
 
 <script>
 export default {
-
+  inject: ['reload']
 }
 </script>
 

@@ -32,6 +32,7 @@ export default {
 }
 .el-header {
   background-color: $headerBgc;
+  font-size: 0.2rem;
 }
 .el-aside {
   background-color: $asideBgc;
@@ -42,5 +43,6 @@ export default {
 .el-main {
   background-color: $mainBgc;
   overflow: hidden;
+  font-size: 0.12rem
 }
 </style>

@@ -47,18 +47,35 @@ import contentModel2 from '@/components/contentModel/contentModel2'
 export default {
   data () {
     return {
-      activeName: 'first'
+      activeName: '',
+      path: ''
     }
   },
   methods: {
     handleClick (tab, event) {
       console.log(tab, event)
+    },
+    getShowTab () {
+      this.path = this.$route
+      this.activeName = this.$route.params.show
+      // this.reload()
     }
   },
   components: {
     SearchModel,
     contentModel1,
     contentModel2
+  },
+  watch: {
+    activeName () {
+      this.getShowTab()
+      console.log(this.activeName)
+      console.log(this.$route)
+      console.log(this.path)
+    }
+  },
+  created () {
+    // this.getShowTab()
   }
 }
 </script>
