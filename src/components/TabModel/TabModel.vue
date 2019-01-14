@@ -59,6 +59,12 @@ export default {
       this.path = this.$route
       this.activeName = this.$route.params.show
       // this.reload()
+    },
+    init () {
+      this.$axios('/news/index')
+        .then(res => {
+          console.log(res)
+        })
     }
   },
   components: {
@@ -75,6 +81,7 @@ export default {
     }
   },
   created () {
+    this.init()
     // this.getShowTab()
   }
 }
