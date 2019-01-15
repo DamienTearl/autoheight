@@ -2,11 +2,11 @@
   <el-row class="data_item1">
     <div class="data_item1_t">
       <div class="data_item1_t_t">
-        <a @click="toLink">详情 >></a>
+        <a @click="changeTabAutoHeightA('second')">详情 >></a>
       </div>
       <div class="data_item1_t_m">
         <div class="data_item1_t_m_l">
-          <span class="data_item1_t_m_l_num">1.300
+          <span class="data_item1_t_m_l_num">1,300
             <span class="data_item1_t_m_l_unit">亿</span>
           </span>
         </div>
@@ -45,12 +45,10 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   methods: {
-    toLink () {
-      this.$router.push({path: `/HomePage/TabModel/second`})
-      this.$router.go(0)
-    }
+    ...mapActions(['changeTabAutoHeightA'])
   }
 }
 </script>

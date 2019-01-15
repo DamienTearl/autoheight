@@ -3,6 +3,11 @@
       font-size:100px;
   }
 }
+@media only screen and (max-width: 1500px), only screen and (max-device-width:1500px) {
+  html {
+      font-size:78px;
+  }
+}
 @media only screen and (max-width: 1366px), only screen and (max-device-width:1366px) {
   html {
       font-size:72px;

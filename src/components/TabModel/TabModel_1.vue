@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs v-model="tabAutoHeight" @tab-click="handleClick">
     <el-tab-pane label="概览" name="first">
       <el-row>
         <el-col class="searchDiv">
@@ -41,30 +41,16 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 import SearchModel from '@/components/SearchModel/SearchModel'
 import contentModel1 from '@/components/contentModel/contentModel1'
 import contentModel2 from '@/components/contentModel/contentModel2'
 export default {
+  inject: ['reload'],
   data () {
     return {
-      activeName: '',
-      path: ''
-    }
-  },
-  methods: {
-    handleClick (tab, event) {
-      console.log(tab, event)
-    },
-    getShowTab () {
-      this.path = this.$route
-      this.activeName = this.$route.params.show
-      // this.reload()
-    },
-    init () {
-      this.$axios('/news/index')
-        .then(res => {
-          console.log(res)
-        })
+      // activeName: this.tabAutoHeight || 'first'
     }
   },
   components: {
@@ -72,17 +58,34 @@ export default {
     contentModel1,
     contentModel2
   },
-  watch: {
-    activeName () {
-      this.getShowTab()
-      console.log(this.activeName)
-      console.log(this.$route)
-      console.log(this.path)
+  computed: {
+    tabAutoHeight: {
+      get () {
+        return this.$store.state.tabAutoHeight
+      },
+      set () {}
     }
+    // ...mapState({
+    //   tabAutoHeight: 'tabAutoHeight'
+    // })
+  },
+  methods: {
+    ...mapMutations(['changeTabAutoHeightM']),
+    ...mapActions(['changeTabAutoHeightA']),
+    handleClick (tab, event) {
+      console.log(tab.name)
+      // this.$store.dispatch('changeTabAutoHeightA', tab.name)
+      this.changeTabAutoHeightA(tab.name)
+    }
+    // init () {
+    //   this.$axios('/news/index')
+    //     .then(res => {
+    //       console.log(res)
+    //     })
+    // }
   },
   created () {
-    this.init()
-    // this.getShowTab()
+    // this.init()
   }
 }
 </script>

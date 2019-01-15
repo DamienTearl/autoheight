@@ -2,7 +2,7 @@
   <el-col>
     <!-- <el-row style="background-color: $asideBgc;color: $fontC;height: 20px;display: none" ref="hideBox"></el-row> -->
     <el-menu
-      default-active="1-1"
+      :default-active="navAutoHeight"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -19,13 +19,15 @@
         <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span>导航一</span>
+          <span>经纪业务</span>
         </template>
         <!-- <el-menu-item-group> -->
-          <router-link to="/HomePage/TabModel/first" tag="div">
-            <el-menu-item index="1-1">选项1</el-menu-item>
+          <router-link to="/HomePage/TabModel1" tag="div">
+            <el-menu-item index="1-1">总览</el-menu-item>
           </router-link>
-          <el-menu-item index="1-2">选项2</el-menu-item>
+          <router-link to="/HomePage/TabModel2" tag="div">
+            <el-menu-item index="1-2">信用业务</el-menu-item>
+          </router-link>
         <!-- </el-menu-item-group> -->
         <!-- <el-menu-item-group title="分组2"> -->
           <el-menu-item index="1-3">选项3</el-menu-item>
@@ -86,14 +88,17 @@
 </style>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      isCollapse: true,
-      menuBgc: '',
-      menuC: '',
-      menuAC: ''
+      isCollapse: true
     }
+  },
+  computed: {
+    ...mapState({
+      navAutoHeight: 'navAutoHeight'
+    })
   },
   methods: {
     handleOpen (key, keyPath) {

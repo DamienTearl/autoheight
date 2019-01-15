@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import '../static/media.css'
 import 'element-ui/lib/theme-chalk/index.css'
+import store from './store'
 
 Vue.use(ElementUI)
 
@@ -20,6 +21,7 @@ require('./mock.js')
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
