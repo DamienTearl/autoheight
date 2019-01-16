@@ -24,7 +24,9 @@
         </el-col>
       </el-col>
       <el-col :span="5">
-        <el-row class="contntBox"></el-row>
+        <el-row class="contntBox">
+          <model3/>
+        </el-row>
       </el-col>
     </el-row>
     <el-row class="bottomDiv" :gutter="20">
@@ -44,10 +46,12 @@
 <script>
 import model1 from '@/components/contentModel/contentModel2/model1'
 import model2 from '@/components/contentModel/contentModel2/model2'
+import model3 from '@/components/contentModel/contentModel2/model3'
 export default {
   components: {
     model1,
-    model2
+    model2,
+    model3
   }
 }
 </script>
@@ -192,6 +196,7 @@ export default {
               }
             }
           }
+          // 第三模块样式结束
         }
         .data_item1_b {
           height: 35%;
@@ -241,4 +246,9 @@ export default {
     padding: 0.15rem
   }
 }
+// 第四模块微调样式
+#model_4 .data_item1_t_m_r_tb {
+  background-color: #0fe97a;
+}
+  // 第四模块微调样式
 </style>

@@ -3,16 +3,20 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import axios from 'axios'
+// import echarts from 'echarts'
 import App from './App'
 import router from './router'
 import '../static/media.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
+import common from '../static/common.js'
 
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+// Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
+Vue.prototype.$common = common
 
 // 引入mockjs
 require('./mock.js')
