@@ -30,7 +30,7 @@
           </router-link>
         <!-- </el-menu-item-group> -->
         <!-- <el-menu-item-group title="分组2"> -->
-          <el-menu-item index="1-3">选项3</el-menu-item>
+          <el-menu-item index="1-3">金融产品销售</el-menu-item>
         <!-- </el-menu-item-group> -->
           <el-menu-item index="1-4">选项4</el-menu-item>
         <!-- <el-submenu index="1-4">

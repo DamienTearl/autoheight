@@ -4,28 +4,28 @@
       <el-col :span="19" class="modelDiv">
         <el-col :span="6">
           <el-row id="model_1">
-            <model1/>
+            <model1 v-bind:model1Data="glKhtgzcData"/>
           </el-row>
         </el-col>
         <el-col :span="6">
           <el-row id="model_2">
-            <model1/>
+            <model1 v-bind:model1Data="khgmData"/>
           </el-row>
         </el-col>
         <el-col :span="6">
           <el-row id="model_3">
-            <model2/>
+            <model2 v-bind:model2Data="jrcpData"/>
           </el-row>
         </el-col>
         <el-col :span="6">
           <el-row id="model_4">
-            <model2/>
+            <model2 v-bind:model2Data="gjscfeData"/>
           </el-row>
         </el-col>
       </el-col>
       <el-col :span="5">
         <el-row class="contntBox">
-          <model3/>
+          <model3 v-bind:echartsData="glLryeData"/>
         </el-row>
       </el-col>
     </el-row>
@@ -52,6 +52,75 @@ export default {
     model1,
     model2,
     model3
+  },
+  data () {
+    return {
+      glLryeData: [],
+      glKhtgzcData: {},
+      khgmData: {},
+      jrcpData: {},
+      gjscfeData: {}
+    }
+  },
+  computed: {
+    newArr () {
+      return this.glLryeData
+    },
+    newArr1 () {
+      return this.glKhtgzcData
+    },
+    newArr2 () {
+      return this.khgmData
+    },
+    newArr3 () {
+      return this.jrcpData
+    },
+    newArr4 () {
+      return this.gjscfeData
+    }
+  },
+  methods: {
+    getglKhtgzcData () {
+      this.$axios('/glKhtgzcData/index')
+        .then(res => {
+          this.glKhtgzcData = res.data
+        })
+    },
+    getkhgmData () {
+      this.$axios('/khgmData/index')
+        .then(res => {
+          this.khgmData = res.data
+        })
+    },
+    getjrcpData () {
+      this.$axios('/jrcpData/index')
+        .then(res => {
+          this.jrcpData = res.data
+        })
+    },
+    getglLryeData () {
+      this.$axios('/glLryeData/index')
+        .then(res => {
+          this.glLryeData = res.data
+        })
+    },
+    getgjscfeData () {
+      this.$axios('/gjscfeData/index')
+        .then(res => {
+          this.gjscfeData = res.data
+        })
+    },
+    init () {
+      this.getglKhtgzcData()
+      this.getkhgmData()
+      this.getjrcpData()
+      this.getgjscfeData()
+      this.getglLryeData()
+    }
+  },
+  created () {
+    this.init()
+    console.log('fatherCreated')
   }
 }
 </script>

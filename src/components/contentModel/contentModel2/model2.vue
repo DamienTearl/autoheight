@@ -7,19 +7,25 @@
       <div class="data_item1_t_c">
         <div class="data_item1_t_c_l">
           <div class="data_item1_t_c_l_t">
-            <span class="data_item1_t_m_l_num">1,300
-              <span class="data_item1_t_m_l_unit">亿</span>
+            <span class="data_item1_t_m_l_num">
+              {{ this.$common.handlerData(model2Data.number) && this.$common.handlerData(model2Data.number)[0] }}
+              <span class="data_item1_t_m_l_unit">
+                {{ this.$common.handlerData(model2Data.number, model2Data.unit) && this.$common.handlerData(model2Data.number, model2Data.unit)[1] }}
+              </span>
             </span>
           </div>
           <div class="data_item1_t_c_l_b">
             <div class="data_item1_t_b_l">
-              <div class="data_item1_t_b_l_des">客户托管资产</div>
+              <div class="data_item1_t_b_l_des">{{ model2Data.title }}</div>
             </div>
           </div>
         </div>
         <div class="data_item1_t_c_r">
-          <div class="data_item1_t_m_r_tb">同：<br/>
-            <span class="data_item1_t_m_r_tb_num">0</span>%
+          <div class="data_item1_t_m_r_tb">{{ model2Data &&  model2Data.describe }}：<br/>
+            <span class="data_item1_t_m_r_tb_num">
+              {{ this.$common.handlerData(model2Data.currentMonth) && this.$common.handlerData(model2Data.currentMonth)[0] }}
+            </span>
+            {{ model2Data.unit1 || (this.$common.handlerData(model2Data.currentMonth) && this.$common.handlerData(model2Data.currentMonth)[1]) }}
           </div>
         </div>
       </div>
@@ -27,18 +33,20 @@
     <div class="data_item1_b">
       <div class="data_item1_b_t">
         <div class="data_item1_b_t_l">
-          普通客户资产
+          {{ model2Data &&  model2Data.title_sup }}
         </div>
         <div class="data_item1_b_t_r">
-          10000000元
+          {{ this.$common.handlerData(model2Data.num_sup) && this.$common.handlerData(model2Data.num_sup)[0]}}
+          {{ this.$common.handlerData(model2Data.num_sup) && this.$common.handlerData(model2Data.num_sup)[1]}}
         </div>
       </div>
       <div class="data_item1_b_b">
         <div class="data_item1_b_b_l">
-          两融净资产
+          {{ model2Data &&  model2Data.title_sub }}
         </div>
         <div class="data_item1_b_b_r">
-          10000元
+          {{ this.$common.handlerData(model2Data.num_sub) && this.$common.handlerData(model2Data.num_sub)[0]}}
+          {{ this.$common.handlerData(model2Data.num_sub) && this.$common.handlerData(model2Data.num_sub)[1]}}
         </div>
       </div>
     </div>
@@ -47,7 +55,7 @@
 
 <script>
 export default {
-
+  props: ['model2Data']
 }
 </script>
 

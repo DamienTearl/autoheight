@@ -77,15 +77,8 @@ export default {
       // this.$store.dispatch('changeTabAutoHeightA', tab.name)
       this.changeTabAutoHeightA(tab.name)
     }
-    // init () {
-    //   this.$axios('/news/index')
-    //     .then(res => {
-    //       console.log(res)
-    //     })
-    // }
   },
   created () {
-    // this.init()
   }
 }
 </script>

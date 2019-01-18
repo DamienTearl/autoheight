@@ -30,16 +30,37 @@ export default {
   data () {
     return {
       dataObj: {
-        xAxisData: ['20180116', '20180115'],
-        seriesData: [1000, 2000],
+        xAxisData: [],
+        seriesData: [],
         name: '两融余额'
       }
     }
   },
+  props: ['echartsData'],
   methods: {
+    dataInto () {
+      for (var i = 0; i < this.echartsData.length; i++) {
+        this.dataObj.xAxisData.push(this.echartsData[i]['date'])
+        this.dataObj.seriesData.push(this.echartsData[i]['data'])
+      }
+    }
+  },
+  created () {
+    console.log(this.echartsData)
+    // console.log('--created')
+  },
+  beforeMount () {
+    // console.log(this.echartsData + '--beforeMount')
+    // console.log('--beforeMount')
+    // this.dataInto()
   },
   mounted () {
-    this.$common.createBarWithNoCoordinates(document.getElementById('box1'), this.dataObj)
+    // console.log(this.echartsData + '--mounted')
+    // console.log('--mounted')
+    setTimeout(() => {
+      this.dataInto()
+      this.$common.createBarWithNoCoordinates(document.getElementById('box1'), this.dataObj)
+    }, 1000)
   }
 }
 </script>
