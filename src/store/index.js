@@ -15,13 +15,21 @@ const mutations = {
   // 改变tab高亮
   changeTabAutoHeightM (state, type) {
     state.tabAutoHeight = type
+  },
+  // 改变nav高亮
+  changeNavAutoHeightM (state, type) {
+    state.navAutoHeight = type
   }
 }
 // 动作
 const actions = {
-  // 派遣 changeTabAutoHeight 执行
+  // 派遣 changeTabAutoHeightM 执行
   changeTabAutoHeightA (context, type) {
     context.commit('changeTabAutoHeightM', type)
+  },
+  // 派遣 changeNavAutoHeightM 执行
+  changeNavAutoHeightA (context, type) {
+    context.commit('changeNavAutoHeightM', type)
   }
 }
 //

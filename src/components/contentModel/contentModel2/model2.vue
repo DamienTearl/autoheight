@@ -2,7 +2,7 @@
   <el-row class="data_item1">
     <div class="data_item1_t">
       <div class="data_item1_t_t">
-        <a @click="changeTabAutoHeightA('second')">详情 >></a>
+        <a @click="handlerAutoHeight(model2Data.params, model2Data.navParams)">详情 >></a>
       </div>
       <div class="data_item1_t_c">
         <div class="data_item1_t_c_l">
@@ -54,7 +54,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
+  methods: {
+    ...mapActions(['changeTabAutoHeightA', 'changeNavAutoHeightA']),
+    handlerAutoHeight (params1, params2) {
+      this.changeNavAutoHeightA(params2)
+      // console.log(this.$store.state.)
+      this.changeTabAutoHeightA(params1)
+    }
+  },
   props: ['model2Data']
 }
 </script>

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import axios from 'axios'
-// import echarts from 'echarts'
+import echarts from 'echarts'
 import App from './App'
 import router from './router'
 import '../static/media.css'
@@ -14,7 +14,7 @@ import common from '../static/common.js'
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
-// Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 Vue.prototype.$common = common
 

@@ -25,13 +25,15 @@
       </el-col>
       <el-col :span="5">
         <el-row class="contntBox">
-          <model3 v-bind:echartsData="glLryeData"/>
+          <model3 v-bind:echartsData="glLryeDataE" v-bind:model3Data="glLryeData"/>
         </el-row>
       </el-col>
     </el-row>
     <el-row class="bottomDiv" :gutter="20">
       <el-col :span="19">
-        <el-row class="contntBox"></el-row>
+        <el-row class="contntBox" id="map">
+          <model4/>
+        </el-row>
       </el-col>
       <el-col :span="5">
         <el-row class="sliceDiv">
@@ -47,24 +49,27 @@
 import model1 from '@/components/contentModel/contentModel2/model1'
 import model2 from '@/components/contentModel/contentModel2/model2'
 import model3 from '@/components/contentModel/contentModel2/model3'
+import model4 from '@/components/contentModel/contentModel2/model4'
 export default {
   components: {
     model1,
     model2,
-    model3
+    model3,
+    model4
   },
   data () {
     return {
-      glLryeData: [],
+      glLryeDataE: [],
       glKhtgzcData: {},
       khgmData: {},
       jrcpData: {},
-      gjscfeData: {}
+      gjscfeData: {},
+      glLryeData: {}
     }
   },
   computed: {
     newArr () {
-      return this.glLryeData
+      return this.glLryeDataE
     },
     newArr1 () {
       return this.glKhtgzcData
@@ -77,6 +82,9 @@ export default {
     },
     newArr4 () {
       return this.gjscfeData
+    },
+    newArr5 () {
+      return this.glLryeData
     }
   },
   methods: {
@@ -98,8 +106,14 @@ export default {
           this.jrcpData = res.data
         })
     },
-    getglLryeData () {
+    getglLryeDataE () {
       this.$axios('/glLryeData/index')
+        .then(res => {
+          this.glLryeDataE = res.data
+        })
+    },
+    getglLryeData () {
+      this.$axios('/lryeData/index')
         .then(res => {
           this.glLryeData = res.data
         })
@@ -116,11 +130,12 @@ export default {
       this.getjrcpData()
       this.getgjscfeData()
       this.getglLryeData()
+      this.getglLryeDataE()
     }
   },
   created () {
     this.init()
-    console.log('fatherCreated')
+    // console.log('fatherCreated')
   }
 }
 </script>
@@ -186,7 +201,7 @@ export default {
                 padding: 0.01rem 0.08rem;
                 border-radius: 4px;
                 .data_item1_t_m_r_tb_num {
-                  font-weight: 600;
+                  font-weight: 500;
                 }
               }
             }
@@ -207,7 +222,7 @@ export default {
                 padding: 0.01rem 0.08rem;
                 border-radius: 4px;
                 .data_item1_t_b_r_hb_num {
-                  font-weight: 600;
+                  font-weight: 500;
                 }
               }
             }
@@ -261,7 +276,7 @@ export default {
               padding:0.08rem;
               border-radius: 4px;
               .data_item1_t_m_r_tb_num {
-                font-weight: 600;
+                font-weight: 500;
               }
             }
           }
@@ -312,7 +327,10 @@ export default {
     }
   }
   .contntBox {
-    padding: 0.15rem
+    padding: 0.15rem;
+  }
+  #map .el-row,.nopadding {
+    padding: 0;
   }
 }
 // 第四模块微调样式

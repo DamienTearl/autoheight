@@ -7,13 +7,13 @@
       <div class="data_item1_t_c">
         <div class="data_item1_t_c_l">
           <div class="data_item1_t_c_l_t">
-            <span class="data_item1_t_m_l_num">1,300
-              <span class="data_item1_t_m_l_unit">亿</span>
+            <span class="data_item1_t_m_l_num">{{ this.$common.handlerData(model3Data.number) && this.$common.handlerData(model3Data.number)[0] }}
+              <span class="data_item1_t_m_l_unit">{{ this.$common.handlerData(model3Data.number, model3Data.unit) && this.$common.handlerData(model3Data.number, model3Data.unit)[1] }}</span>
             </span>
           </div>
           <div class="data_item1_t_c_l_b">
             <div class="data_item1_t_b_l">
-              <div class="data_item1_t_b_l_des">客户托管资产</div>
+              <div class="data_item1_t_b_l_des">{{ model3Data.title }}</div>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@ export default {
       }
     }
   },
-  props: ['echartsData'],
+  props: ['echartsData', 'model3Data'],
   methods: {
     dataInto () {
       for (var i = 0; i < this.echartsData.length; i++) {
@@ -46,7 +46,7 @@ export default {
     }
   },
   created () {
-    console.log(this.echartsData)
+    // console.log(this.echartsData)
     // console.log('--created')
   },
   beforeMount () {
