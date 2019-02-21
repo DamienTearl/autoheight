@@ -7,7 +7,7 @@
       <div class="data_item1_t_m">
         <div class="data_item1_t_m_l">
           <span class="data_item1_t_m_l_num">{{ this.$common.handlerData(model1Data.number) && this.$common.handlerData(model1Data.number)[0] }}
-            <span class="data_item1_t_m_l_unit">{{ this.$common.handlerData(model1Data.number, model1Data.unit) && this.$common.handlerData(model1Data.number, model1Data.unit)[1] }}</span>
+            <span class="data_item1_t_m_l_unit">{{ this.$common.handlerData(model1Data.number, model1Data.unit, '') && this.$common.handlerData(model1Data.number, model1Data.unit)[1] }}</span>
           </span>
         </div>
         <div class="data_item1_t_m_r">

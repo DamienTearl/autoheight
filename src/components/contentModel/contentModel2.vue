@@ -37,8 +37,12 @@
       </el-col>
       <el-col :span="5">
         <el-row class="sliceDiv">
-          <el-row class="sliceDivT contntBox"></el-row>
-          <el-row class="sliceDivB contntBox"></el-row>
+          <el-row class="sliceDivT contntBox">
+            <model5 :echartsType="'line'"/>
+          </el-row>
+          <el-row class="sliceDivB contntBox">
+            <model5 :echartsType="'pie'"/>
+          </el-row>
         </el-row>
       </el-col>
     </el-row>
@@ -50,12 +54,14 @@ import model1 from '@/components/contentModel/contentModel2/model1'
 import model2 from '@/components/contentModel/contentModel2/model2'
 import model3 from '@/components/contentModel/contentModel2/model3'
 import model4 from '@/components/contentModel/contentModel2/model4'
+import model5 from '@/components/contentModel/contentModel2/model5'
 export default {
   components: {
     model1,
     model2,
     model3,
-    model4
+    model4,
+    model5
   },
   data () {
     return {
@@ -314,14 +320,53 @@ export default {
         justify-content: space-between;
         flex-direction: column;
         padding: 0;
+        overflow: hidden;
         .sliceDivT {
           height: 50%;
           margin-bottom: 20px;
           padding: 0.15rem;
+          .data_item1_t {
+            display: block;
+            height: auto;
+            border: none;
+            .gl_title {
+              display: inline-block;
+              font-size: 0.16rem;
+            }
+            .gl_particulars {
+              float: right;
+              color: $tabC;
+            }
+          }
+          .data_item1_content {
+            padding: 0;
+            .contentBox {
+              height: 100%;
+            }
+          }
         }
         .sliceDivB {
           height: 50%;
           padding: 0.15rem;
+          .data_item1_t {
+            display: block;
+            height: auto;
+            border: none;
+            .gl_title {
+              display: inline-block;
+              font-size: 0.16rem;
+            }
+            .gl_particulars {
+              float: right;
+              color: $tabC;
+            }
+          }
+          .data_item1_content {
+            padding: 0;
+            .contentBox {
+              height: 100%;
+            }
+          }
         }
       }
     }

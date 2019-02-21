@@ -16,6 +16,7 @@
           <SearchModel/>
         </el-col>
         <el-row class="contentDiv">
+          <contentModel3/>
         </el-row>
       </el-row>
     </el-tab-pane>
@@ -46,6 +47,7 @@ import { mapMutations, mapActions } from 'vuex'
 import SearchModel from '@/components/SearchModel/SearchModel'
 import contentModel1 from '@/components/contentModel/contentModel1'
 import contentModel2 from '@/components/contentModel/contentModel2'
+import contentModel3 from '@/components/contentModel/contentModel3'
 export default {
   inject: ['reload'],
   data () {
@@ -56,7 +58,8 @@ export default {
   components: {
     SearchModel,
     contentModel1,
-    contentModel2
+    contentModel2,
+    contentModel3
   },
   computed: {
     tabAutoHeight: {

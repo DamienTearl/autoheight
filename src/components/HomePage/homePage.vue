@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>Header</el-header>
-    <el-container>
+    <el-container class="el-container-content">
       <el-aside width="15%">
         <navMenu/>
       </el-aside>
@@ -26,6 +26,9 @@ export default {
 <style lang="scss">
 .el-container  {
   height: 100%;
+}
+.el-container-content {
+  overflow: hidden;
 }
 .el-header, .el-aside, .el-main {
   color: $fontC;
