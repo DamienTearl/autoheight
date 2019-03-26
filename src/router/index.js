@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import HomePage from '@/components/HomePage/homePage'
 import TabModel1 from '@/components/TabModel/TabModel_1'
 import TabModel2 from '@/components/TabModel/TabModel_2'
+import TabModel3 from '@/components/TabModel/TabModel_3'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
           path: '/HomePage/TabModel2',
           name: 'TabModel2',
           component: TabModel2
+        },
+        {
+          path: '/HomePage/TabModel3',
+          name: 'TabModel3',
+          component: TabModel3
         }
       ]
     }

@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="tabAutoHeight" @tab-click="handleClick">
-    <el-tab-pane label="概览" name="first">
+    <el-tab-pane label="概览" name="first" lazy>
       <el-row>
         <el-col class="searchDiv">
           <SearchModel/>
@@ -10,7 +10,7 @@
         </el-row>
       </el-row>
     </el-tab-pane>
-    <el-tab-pane label="交易分析" name="second">
+    <el-tab-pane label="交易分析" name="second" lazy>
       <el-row>
         <el-col class="searchDiv">
           <SearchModel/>
@@ -20,7 +20,7 @@
         </el-row>
       </el-row>
     </el-tab-pane>
-    <el-tab-pane label="客户分析" name="third">
+    <el-tab-pane label="客户分析" name="third" lazy>
       <el-row>
         <el-col class="searchDiv">
           <SearchModel/>
@@ -76,13 +76,17 @@ export default {
     ...mapMutations(['changeTabAutoHeightM']),
     ...mapActions(['changeTabAutoHeightA']),
     handleClick (tab, event) {
-      console.log(tab.name)
-      // this.$store.dispatch('changeTabAutoHeightA', tab.name)
-      this.changeTabAutoHeightA(tab.name)
+      // this.changeTabAutoHeightA(tab.name)
+      console.log(tab, event)
+      // this.reload()
     }
-  },
-  created () {
   }
+  // mounted () {
+  //   window.onresize = function () {
+  //     // console.log('bianle')
+  //     // this.reload()
+  //   }
+  // }
 }
 </script>
 

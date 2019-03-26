@@ -3,12 +3,16 @@
     <el-row :gutter="20" class="topDiv">
       <el-col :span="12">
         <div class="grid-content bg-purple">
-          <el-row class="bg-content"></el-row>
+          <el-row class="bg-content">
+            <Model6/>
+          </el-row>
         </div>
       </el-col>
       <el-col :span="12">
         <div class="grid-content bg-purple">
-          <el-row class="bg-content"></el-row>
+          <el-row class="bg-content">
+            <Model7/>
+          </el-row>
         </div>
       </el-col>
     </el-row>
@@ -28,7 +32,14 @@
 </template>
 
 <script>
-export default {}
+import Model6 from '@/components/contentModel/contentModel3/model6'
+import Model7 from '@/components/contentModel/contentModel3/model7'
+export default {
+  components: {
+    Model6,
+    Model7
+  }
+}
 </script>
 
 <style lang="scss">

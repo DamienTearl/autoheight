@@ -213,6 +213,10 @@ export default {
       return num
     }
   },
+  // 获取当前窗口html的fontSize
+  getFontSizeWithHtml: function () {
+    return parseInt(getComputedStyle(window.document.documentElement)['font-size'])
+  },
 
   /* echarts部分 */
   // 没有坐标轴显示的柱状图
@@ -596,28 +600,8 @@ export default {
   },
   // 没有y轴的折线图
   createLineWithNoY: function (el, dataObj) {
-    let myChart = $echarts.init(el)
+    let myChart1 = $echarts.init(el)
     var option = {
-      // legend: {
-      //   show: false,
-      //   left: 'right',
-      //   formatter: function (params) {
-      //     var result = ''
-      //     var res = ''
-      //     params.forEach(function (item) {
-      //       res = item.name
-      //       result += item.marker + ' ' + item.seriesName + ' : ' + addDot(item.value) + '</br>'
-      //     })
-      //     return res + '<br/>' + result
-      //   },
-      //   y: '5%',
-      //   itemWidth: 18,
-      //   itemHeight: 12,
-      //   textStyle: {
-      //     color: '#fff',
-      //     fontSize: 14
-      //   },
-      // },
       grid: {
         left: '5%',
         top: '5%',
@@ -695,37 +679,17 @@ export default {
         data: [120, 140, 100, 120, 300, 230]
       }
     }
-    myChart.setOption(option, true)
+    myChart1.setOption(option, true)
     window.addEventListener('resize', function () {
-      myChart.resize()
+      myChart1.resize()
     })
   },
   // 南丁格尔玫瑰图
   createRose: function (el, dataObj) {
+    let scale = this.getFontSizeWithHtml()
+    console.log(scale)
     let myChart = $echarts.init(el)
     let option = {
-      // toolbox: {
-      //   show: true,
-      //   feature: {
-      //     mark: {
-      //       show: true
-      //     },
-      //     dataView: {
-      //       show: true,
-      //       readOnly: false
-      //     },
-      //     magicType: {
-      //       show: true,
-      //       type: ['pie', 'funnel']
-      //     },
-      //     restore: {
-      //       show: true
-      //     },
-      //     saveAsImage: {
-      //       show: true
-      //     }
-      //   }
-      // },
       tooltip: {
         trigger: 'item',
         formatter: '{b}：{d}%'
@@ -749,7 +713,8 @@ export default {
           '义乌市4',
         ],
         textStyle: {
-          color: '#fff'
+          color: '#fff',
+          fontSize: 0. * scale
         },
         // y
         // : true,
@@ -879,6 +844,229 @@ export default {
           }
         }
         ]
+      }]
+    }
+    myChart.setOption(option, true)
+    window.addEventListener('resize', function () {
+      myChart.resize()
+    })
+  },
+  // 双折线图  其中一个折线有填充
+  createDoubleLineOneFill: function (el, dataObj) {
+    let myChart = $echarts.init(el)
+    let scale = this.getFontSizeWithHtml()
+    let option = {
+      grid: {
+        left: '5%',
+        top: '20%',
+        bottom: '0%',
+        height:'80%',
+        right: '5%',
+        containLabel: true
+      },
+      title: {
+        text: '股基交易额月度趋势（近12个月）',
+        left: '0',
+        textAlign: 'left',
+        textStyle: {
+          color: '#fff',
+          fontSize: '0.18' * this.getFontSizeWithHtml(),
+          fontWeight: '500',
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+      },
+      legend: {
+        right: '0',
+        data: ['今日','昨日'],
+        textStyle: {
+          color: '#fff',
+          fontSize: '0.14' * this.getFontSizeWithHtml(),
+          fontWeight: '500',
+        }
+      },
+      xAxis: {
+        type: 'category',
+        data: ['00:00','2:00','4:00','6:00','8:00','10:00','12:00','14:00','16:00','18:00','20:00',"22:00"],
+        // boundaryGap: false,
+        splitLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          show: false
+        },
+        axisLabel: {
+        textStyle: {
+          fontSize: 12,
+          color: '#6173a3'
+          }
+        }
+      },
+      yAxis: [
+        {
+          type: 'value',
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,0.2)',
+              type: 'dashed'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine: {
+            show: false,
+          },
+          axisLabel: {
+            textStyle: {
+              fontSize: 12,
+              color: '#6173a3'
+            }
+          }
+        },
+        {
+          type: 'value',
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,0.2)',
+              type: 'dashed'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine: {
+            show: false,
+          },
+          axisLabel: {
+            textStyle: {
+              fontSize: 12,
+              color: '#6173a3'
+            }
+          }
+        },
+      ],
+      series: [{
+        name: '今日',
+        type: 'line',
+        smooth: true,
+        showSymbol: false,
+        symbol: 'circle',
+        symbolSize: 6,
+        data: ['1200', '1400', '1008', '1411', '1026', '1288', '1300', '800', '1100', '1000', '1118', '1322'],
+        areaStyle: {
+          normal: {
+            color: 'rgba(80, 177, 244, 0.6)'
+          }
+        },
+        itemStyle: {
+          normal: {
+            color: 'rgba(80, 177, 244, 1)'
+          }
+        },
+        lineStyle: {
+          normal: {
+            width: 0
+          }
+        }
+      },
+      {
+        name: '昨日',
+        type: 'line',
+        yAxisIndex: 1,
+        smooth: false,
+        showSymbol: false,
+        symbol: 'circle',
+        symbolSize: 6,
+        data: ['1200', '1400', '808', '811', '626', '488', '1600', '1100', '500', '300', '1998', '822'],
+        itemStyle: {
+          normal: {
+            color: '#efca51'
+          }
+        },
+        lineStyle: {
+          normal: {
+            width: 2
+          }
+        }
+      }]
+    }
+    myChart.setOption(option, true)
+    window.addEventListener('resize', function () {
+      // let scale = this.getFontSizeWithHtml()
+      this.console.log(scale)
+      myChart.resize()
+    })
+  },
+  // 饼图带标注
+  createPieWithLable: function (el, dataObj) {
+    let myChart = $echarts.init(el)
+    let scale = this.getFontSizeWithHtml()
+    let option = {
+      tooltip: {
+        show: false
+      },
+      color:['#f69a5c', '#fa6464','#a467fb','#6d66d0','#50aef4'],
+      series: [{
+        type: 'pie',
+        radius: ['30%', '70%'],
+        roseType: 'area',
+        zlevel: 2,
+        label: {
+          normal: {
+            padding: [3,3,3,3],
+            formatter: function (p) {
+              return '{total|'+'    '    + p.name +'    '+    '}\n{white|'   +'    '+ p.value + '万元' + '  \t  ' + p.percent + '%    }';
+            },
+            backgroundColor: 'rgba(0,25,56,.6)',
+            borderColor: '#006ab7',
+            borderWidth: 1,
+            borderRadius: 4,
+            rich: {
+              total: {
+                color: "#fff",
+                fontSize: '0.14'*scale ,
+                align: 'center',
+                padding: [3, 2, 2, 3]
+              },
+              white: {
+                color: "#fff",
+                align: 'center',
+                fontSize: '0.12'*scale ,
+                padding: [3, 2, 3]
+              }
+            }
+          },
+        },
+        data: [{
+          value: 200,
+          name: '港股通交易额'
+        },
+        {
+          value: 400,
+          name: '股基交易额'
+        },
+        {
+          value: 600,
+          name: '债券交易额'
+        },
+        {
+          value: 800,
+          name: '国债回购交易额'
+        },
+        {
+          value: 1000,
+          name: '股转交易额'
+        }]
       }]
     }
     myChart.setOption(option, true)

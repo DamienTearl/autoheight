@@ -56,6 +56,7 @@ import model3 from '@/components/contentModel/contentModel2/model3'
 import model4 from '@/components/contentModel/contentModel2/model4'
 import model5 from '@/components/contentModel/contentModel2/model5'
 export default {
+  inject: ['reload'],
   components: {
     model1,
     model2,
@@ -141,7 +142,13 @@ export default {
   },
   created () {
     this.init()
-    // console.log('fatherCreated')
+  },
+  mounted () {
+    // let that = this
+    window.onresize = function () {
+      console.log(222222222222222222)
+      // that.reload()
+    }
   }
 }
 </script>
@@ -339,9 +346,11 @@ export default {
             }
           }
           .data_item1_content {
+            flex: 1;
+            height: auto;
             padding: 0;
             .contentBox {
-              height: 100%;
+              // flex: 1;
             }
           }
         }
@@ -362,6 +371,8 @@ export default {
             }
           }
           .data_item1_content {
+            flex: 1;
+            height: auto;
             padding: 0;
             .contentBox {
               height: 100%;

@@ -7,16 +7,17 @@
       <!-- </span> -->
     </el-col>
     <el-col class="data_item1_content">
-      <div class="contentBox" :id=" echartsType + 'echartsBox'"></div>
+      <div class="echartsContentBox" :id=" echartsType + 'echartsBox'"></div>
     </el-col>
   </el-row>
 </template>
 
 <script>
 export default {
+  inject: ['reload'],
   props: ['echartsType'],
   mounted () {
-    console.log(this.echartsType)
+    // console.log(this.echartsType)
     if (this.echartsType === 'line') {
       this.$common.createLineWithNoY(document.getElementById(this.echartsType + 'echartsBox'))
     } else {
@@ -27,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+.echartsContentBox {
+  height: 100%;
+}
 </style>
